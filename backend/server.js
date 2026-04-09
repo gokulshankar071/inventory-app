@@ -7,6 +7,12 @@ const app = express(); // ✅ FIRST create app
 app.use(cors());
 app.use(express.json()); // ✅ AFTER app creation
 
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 // ---------------- DATABASE ----------------
 const db = new sqlite3.Database("./database.db", (err) => {
   if (err) {
