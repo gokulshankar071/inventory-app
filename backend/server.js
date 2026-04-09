@@ -2,16 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const sqlite3 = require("sqlite3").verbose();
 
-const app = express(); // ✅ FIRST create app
+const app = express();
 
+// Middleware
 app.use(cors());
-app.use(express.json()); // ✅ AFTER app creation
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.use(express.json());
 
 // ---------------- DATABASE ----------------
 const db = new sqlite3.Database("./database.db", (err) => {
@@ -130,6 +125,8 @@ app.post("/inventory", (req, res) => {
     "SELECT * FROM suppliers WHERE id = ?",
     [supplier_id],
     (err, supplier) => {
+      if (err) return res.status(500).json(err.message);
+
       if (!supplier) {
         return res.status(400).json({ message: "Invalid supplier_id" });
       }
@@ -155,6 +152,7 @@ app.post("/inventory", (req, res) => {
 // GET Inventory
 app.get("/inventory", (req, res) => {
   db.all("SELECT * FROM inventory", [], (err, rows) => {
+    if (err) return res.status(500).json(err.message);
     res.json(rows);
   });
 });
@@ -172,12 +170,15 @@ app.get("/inventory-grouped", (req, res) => {
     `,
     [],
     (err, rows) => {
+      if (err) return res.status(500).json(err.message);
       res.json(rows);
     },
   );
 });
 
 // ---------------- SERVER ----------------
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
