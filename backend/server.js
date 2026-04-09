@@ -8,6 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ---------------- ROOT ROUTE (IMPORTANT FOR RENDER) ----------------
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 // ---------------- DATABASE ----------------
 const db = new sqlite3.Database("./database.db", (err) => {
   if (err) {
