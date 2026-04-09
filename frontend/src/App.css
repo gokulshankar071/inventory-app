@@ -1,0 +1,132 @@
+/* Background with gradient + animation */
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #667eea, #764ba2, #6b8dd6, #8e44ad);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Gradient animation */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glassmorphism card */
+.card {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 30px;
+  width: 500px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Inputs layout */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Fix dropdown options visibility */
+select {
+  color: white; /* for closed select */
+}
+
+/* VERY IMPORTANT */
+select option {
+  color: black; /* text visible */
+  background: white; /* background visible */
+}
+
+/* Input styles */
+input,
+select {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+/* Price range row */
+.price-range {
+  display: flex;
+  gap: 10px;
+}
+
+/* Button */
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #ddd;
+}
+
+/* Table container */
+.table-container {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Messages */
+.error {
+  color: #ff6b6b;
+  margin-top: 10px;
+}
+
+.no-data {
+  margin-top: 10px;
+  color: #eee;
+}
