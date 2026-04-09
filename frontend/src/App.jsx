@@ -25,7 +25,9 @@ function App() {
         maxPrice,
       });
 
-      const res = await fetch(`http://localhost:5000/search?${params}`);
+      const res = await fetch(
+        `https://inventory-app-nv4s.onrender.com/search?${params}`,
+      );
       const data = await res.json();
       setResults(data);
     } catch (err) {
