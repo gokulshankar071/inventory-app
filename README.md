@@ -90,5 +90,5 @@ npm run dev
 
 ## 🌐 Live Demo
 
-Frontend: (your vercel link)
+Frontend: [(your vercel link)](https://inventory-app-eta-lime.vercel.app/)
 Backend: (your render link)
